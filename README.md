@@ -16,7 +16,7 @@ cd cerebro-arclens
 ./run.sh
 ```
 
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000). Click **Run incident demo** (or pick a sample in the rail). You should see:
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) (or [/?demo=1](http://127.0.0.1:8000/?demo=1) to skip the empty state). Click **Run incident demo** (or pick a sample in the rail). You should see:
 
 1. A polarity arc that falls as the incident heats up
 2. Per-turn chips for tone + sarcasm cues

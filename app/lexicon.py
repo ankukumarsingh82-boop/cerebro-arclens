@@ -206,8 +206,6 @@ EMOTIONS: dict[str, set[str]] = {
         "lgtm",
         "solid",
         "safe",
-        "cover",
-        "covering",
         "please",
         "kind",
         "kindly",
@@ -428,6 +426,8 @@ SARCASM_PHRASES = (
     ("not the same thing", 0.3, "correction jab"),
     ("you're overreacting", 0.25, "dismissal"),
     ("love that we", 0.55, "mock affection"),
+    ("don't bother", 0.4, "dismissal"),
+    ("happy?", 0.5, "rhetorical happy"),
 )
 
 SARCASM_EMOJIS = {

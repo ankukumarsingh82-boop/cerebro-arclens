@@ -16,7 +16,7 @@ Support, ops, and group chats do not fail on a single swear word. They fail on a
 ## What to demo (3 minutes)
 
 1. `./run.sh` → http://127.0.0.1:8000
-2. Click **Run incident demo** (`data/slack_incident.txt`)
+2. Click **Run incident demo** (`data/slack_incident.txt`), or open http://127.0.0.1:8000/?demo=1
 3. Show the arc falling through the deploy, the sarcasm cluster (“Oh great. Just what we needed”), and the critical rupture (PII / chargebacks / “I am done covering”)
 4. Switch to `whatsapp_dinner.txt` (personal WhatsApp format) and `json_standup.json` (warm control — should not go critical)
 5. Optional: paste a live Slack snippet in the rail

@@ -350,6 +350,12 @@ function wireInbox() {
 }
 
 wireInbox();
-loadSamples().catch((err) => {
-  $("#samples").textContent = err.message;
-});
+loadSamples()
+  .then(() => {
+    const params = new URLSearchParams(location.search);
+    const sample = params.get("sample") || (params.get("demo") === "1" ? "slack_incident.txt" : "");
+    if (sample) return analyzeSample(sample);
+  })
+  .catch((err) => {
+    $("#samples").textContent = err.message;
+  });

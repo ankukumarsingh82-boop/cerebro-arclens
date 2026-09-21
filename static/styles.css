@@ -172,6 +172,8 @@ textarea, select {
 .stats dt { color: var(--mist); }
 .stats dd { margin: 0; font-variant-numeric: tabular-nums; text-align: right; }
 
+[hidden] { display: none !important; }
+
 .empty {
   min-height: 520px;
   border: 1px solid var(--line);

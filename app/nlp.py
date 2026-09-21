@@ -4,7 +4,7 @@ import re
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-from app.lexicon import EMOTIONS, INTENSIFIERS, NEGATORS
+from app.lexicon import EMOTIONS, INTENSIFIERS, NEGATORS, THREAT_PHRASES
 from app.sarcasm import score_sarcasm
 
 _WORD = re.compile(r"[A-Za-z']+")
@@ -95,11 +95,15 @@ def analyze_text(text: str, previous_text: str | None = None) -> dict:
         + float(vader["pos"] + vader["neg"]) * 0.15,
     )
     sarcasm = score_sarcasm(blob, previous_text)
-    # Surface-positive sarcasm often fools lexicon polarity; tilt it down a little.
-    if sarcasm["flag"] and polarity > 0:
-        polarity = max(-0.45, polarity - 0.55 * sarcasm["score"])
-    elif sarcasm["flag"] and polarity > -0.15:
-        polarity = polarity - 0.2 * sarcasm["score"]
+    # Surface-positive sarcasm is the whole point — invert the smile.
+    if sarcasm["flag"] and polarity >= -0.05:
+        polarity = min(polarity, 0.05 - 0.95 * sarcasm["score"])
+    elif sarcasm["flag"]:
+        polarity = min(polarity, polarity - 0.15 * sarcasm["score"])
+    threats = [p for p in THREAT_PHRASES if p in blob.lower()]
+    if threats:
+        polarity = min(polarity, -0.42)
+        intensity = max(intensity, 0.6)
     polarity = max(-1.0, min(1.0, polarity))
     emotions = _emotion_scores(tokens)
     if sarcasm["flag"]:

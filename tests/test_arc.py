@@ -25,6 +25,9 @@ def test_dinner_marks_sarcasm_and_rupture():
     result = analyze_file(DATA / "whatsapp_dinner.txt")
     assert any(t.tone.sarcasm.flag for t in result.turns)
     assert any(a.kind in {"rupture", "cascade", "cliff", "sarcasm-cluster"} for a in result.alerts)
+    sarcastic_neg = [t for t in result.turns if t.tone.sarcasm.flag and t.tone.polarity < 0]
+    assert sarcastic_neg
+    assert result.turns[-1].tone.polarity < -0.2
 
 
 def test_standup_stays_mostly_warm():
