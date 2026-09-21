@@ -1,0 +1,35 @@
+{
+  "channel": "standup",
+  "messages": [
+    {
+      "speaker": "Dev",
+      "timestamp": "2026-11-02T09:30:00",
+      "text": "Morning. PR for the timeline chart is up. Tests are green."
+    },
+    {
+      "speaker": "Sam",
+      "timestamp": "2026-11-02T09:31:00",
+      "text": "Nice. I'll review after coffee. Thanks for landing the sample parser."
+    },
+    {
+      "speaker": "Dev",
+      "timestamp": "2026-11-02T09:32:00",
+      "text": "Also added sarcasm flags. Not like anyone on this team would ever be sarcastic."
+    },
+    {
+      "speaker": "Sam",
+      "timestamp": "2026-11-02T09:33:00",
+      "text": "Ha. Yeah right. Looks solid though — ship it after Priya's glance."
+    },
+    {
+      "speaker": "Priya",
+      "timestamp": "2026-11-02T09:34:00",
+      "text": "Glanced. LGTM. Excited to show this on the Cerebro floor."
+    },
+    {
+      "speaker": "Dev",
+      "timestamp": "2026-11-02T09:35:00",
+      "text": "Great. I'll stay on the channel in case the demo Wi-Fi gets weird."
+    }
+  ]
+}

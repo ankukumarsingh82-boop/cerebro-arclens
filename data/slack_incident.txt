@@ -1,0 +1,41 @@
+marco [09:01 AM]
+Morning — config change is ready. Looking good, feeling confident.
+
+priya [09:02 AM]
+Nice. Ship it after I glance at the dashboard. Grateful for the extra tests.
+
+marco [09:04 AM]
+Shipped. Services are green.
+
+priya [09:12 AM]
+Hmm. Error rate ticked from 0.2% to 1.1%.
+
+marco [09:13 AM]
+Probably a scrape. I'd give it a minute.
+
+priya [09:15 AM]
+5xx is 12% on checkout. This is not a scrape.
+
+marco [09:16 AM]
+Oh great. Just what we needed an hour before the investor demo.
+
+priya [09:17 AM]
+Cart is failing. Support queue is exploding.
+
+marco [09:18 AM]
+Yeah, amazing timing. Love that we "tested" this.
+
+priya [09:19 AM]
+Stop. Rollback now. I am not joking.
+
+marco [09:20 AM]
+Rolling back. This is a disaster. I told you Monday deploys were a bad idea.
+
+priya [09:22 AM]
+Legal just asked if any PII leaked. I cannot do this again.
+
+marco [09:23 AM]
+Customers are threatening chargebacks. Perfect. Absolutely perfect.
+
+priya [09:24 AM]
+If this demo dies I am done covering for these launches. This is unacceptable.

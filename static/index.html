@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ArcLens — tone intelligence</title>
+    <meta
+      name="description"
+      content="Upload a chat export. ArcLens maps per-turn tone, sarcasm, the emotion arc, and escalation alerts. Local-first. Cerebro PS-01."
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="top">
+      <div class="brand">
+        <svg class="aperture" viewBox="0 0 48 48" width="36" height="36" aria-hidden="true">
+          <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.7" />
+          <circle cx="24" cy="24" r="5" fill="currentColor" />
+          <path d="M24 2 L28 16 L24 24 L20 16 Z" fill="currentColor" opacity="0.55" />
+          <path d="M46 24 L32 28 L24 24 L32 20 Z" fill="currentColor" opacity="0.4" />
+          <path d="M24 46 L20 32 L24 24 L28 32 Z" fill="currentColor" opacity="0.55" />
+          <path d="M2 24 L16 20 L24 24 L16 28 Z" fill="currentColor" opacity="0.4" />
+        </svg>
+        <div>
+          <p class="eyebrow">Cerebro PS-01 · IEM</p>
+          <h1>ArcLens</h1>
+        </div>
+      </div>
+      <p class="lede">
+        Focus a transcript. Read the temperature of the room — per-turn tone,
+        sarcasm flags, the emotion arc, and where it starts to break.
+      </p>
+      <p class="local">Local-first NLP · no API keys · chats never leave this machine</p>
+    </header>
+
+    <main class="shell">
+      <aside class="rail">
+        <section class="panel">
+          <h2>Inbox</h2>
+          <form id="upload-form" class="drop" tabindex="0">
+            <input id="file" type="file" accept=".txt,.json,.log,.csv,text/plain,application/json" hidden />
+            <p class="drop-title">Drop a WhatsApp / Slack export</p>
+            <p class="drop-sub">or click to browse · .txt / .json</p>
+            <button type="button" id="browse" class="btn ghost">Choose file</button>
+          </form>
+          <label class="paste-label" for="paste">Paste a thread</label>
+          <textarea id="paste" rows="5" placeholder="Name: message&#10;Name: message"></textarea>
+          <button type="button" id="paste-run" class="btn">Read paste</button>
+        </section>
+        <section class="panel">
+          <h2>Samples</h2>
+          <p class="hint">Judges: start with the incident. It cliffs.</p>
+          <div id="samples" class="samples"></div>
+        </section>
+        <section class="panel stats" id="stats" hidden>
+          <h2>Room</h2>
+          <dl id="stat-list"></dl>
+        </section>
+      </aside>
+
+      <section class="stage">
+        <div id="empty" class="empty">
+          <div class="empty-iris" aria-hidden="true"></div>
+          <h2>No thread in focus</h2>
+          <p>Load a sample or drop an export. ArcLens will score every turn, draw the arc, and raise alerts when the slope turns hostile.</p>
+          <button type="button" class="btn" id="demo">Run incident demo</button>
+        </div>
+
+        <div id="workspace" hidden>
+          <section class="panel arc-panel">
+            <div class="arc-head">
+              <div>
+                <h2>Emotion arc</h2>
+                <p id="arc-caption" class="hint"></p>
+              </div>
+              <div id="alert-pills" class="pills"></div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="arc-chart" height="118"></canvas>
+            </div>
+            <div id="heat" class="heat" aria-hidden="true"></div>
+            <p class="legend">
+              <span class="swatch teal"></span> calm / supportive
+              <span class="swatch gold"></span> mixed / sarcastic
+              <span class="swatch ember"></span> heat / rupture
+              <span class="click-hint">Click a point to jump to that turn</span>
+            </p>
+          </section>
+
+          <section class="panel" id="alerts-panel">
+            <h2>Escalation alerts</h2>
+            <div id="alerts" class="alerts"></div>
+          </section>
+
+          <section class="panel">
+            <div class="thread-head">
+              <h2>Turns</h2>
+              <div class="filters">
+                <label>Speaker
+                  <select id="speaker-filter"></select>
+                </label>
+                <label class="check">
+                  <input type="checkbox" id="sarcasm-only" />
+                  Sarcasm only
+                </label>
+                <button type="button" class="btn ghost" id="copy-json">Copy JSON</button>
+              </div>
+            </div>
+            <div id="thread" class="thread"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>ArcLens MVP · local VADER + interpretable sarcasm cues</span>
+      <a href="/docs">API docs</a>
+    </footer>
+
+    <script src="/static/vendor/chart.umd.min.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
